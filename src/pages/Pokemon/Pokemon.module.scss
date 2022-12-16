@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import 'styles/variaveis';
+@import "styles/breakpoints";
+
+
+.normal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $normal;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/normalBall.svg");
+  width: 380px;
+}
+.tipo__normal{
+  text-align: center;
+  background-color: $normal;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.fighting{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $fighting;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/fightingBall.svg");
+  width: 380px;
+}
+.tipo__fighting{
+  text-align: center;
+  background-color: $fighting;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.flying{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $flying;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/flyingBall.svg");
+  width: 380px;
+}
+.tipo__flying{
+  text-align: center;
+  background-color: $flying;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.poison{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $poison;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/poisonBall.svg");
+  width: 380px;
+}
+.tipo__poison{
+  text-align: center;
+  background-color: $poison;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.ground{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $ground;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/groundBall.svg");
+  width: 380px;
+}
+.tipo__ground{
+  text-align: center;
+  background-color: $ground;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.rock{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $rock;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/rockBall.svg");
+  width: 380px;
+}
+.tipo__rock{
+  text-align: center;
+  background-color: $rock;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.bug{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $bug;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/bugBall.svg");
+  width: 380px;
+}
+.tipo__bug{
+  text-align: center;
+  background-color: $bug;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.ghost{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $ghost;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/ghostBall.svg");
+  width: 380px;
+}
+.tipo__ghost{
+  text-align: center;
+  background-color: $ghost;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.steel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $steel;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/steelBall.svg");
+  width: 380px;
+}
+.tipo__steel{
+  text-align: center;
+  background-color: $steel;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.steel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $steel;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/steelBall.svg");
+  width: 380px;
+}
+.tipo__steel{
+  text-align: center;
+  background-color: $steel;
+  border-radius: 11px;
+  width: 6em;
+}
+
+
+.fire{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $fire;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/fireBall.svg");
+  width: 380px;
+}
+.tipo__fire{
+  text-align: center;
+  background-color: $fire;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.water{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $water;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/waterBall.svg");
+  width: 380px;
+}
+.tipo__water{
+  text-align: center;
+  background-color: $water;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.grass{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $grass;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/grassBall.svg");
+  width: 380px;
+}
+.tipo__grass{
+  text-align: center;
+  background-color: $grass;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.electric{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $electric;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/electricBall.svg");
+  width: 380px;
+}
+.tipo__electric{
+  text-align: center;
+  background-color: $electric;
+  border-radius: 11px;
+  width: 6em;
+}
+
+.electric{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $electric;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/electricBall.svg");
+  width: 380px;
+}
+.tipo__electric{
+  text-align: center;
+  background-color: $electric;
+  border-radius: 11px;
+  width: 6em;
+}
+
+
+.psychic{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $psychic;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/psychicBall.svg");
+  width: 380px;
+}
+.tipo__psychic{
+  color: $white;
+  text-align: center;
+  background-color: $psychic;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.psychic{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $psychic;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/psychicBall.svg");
+  width: 380px;
+}
+.tipo__psychic{
+  color: $white;
+  text-align: center;
+  background-color: $psychic;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.ice{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $ice;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/iceBall.svg");
+  width: 380px;
+}
+.tipo__ice{
+  color: $white;
+  text-align: center;
+  background-color: $ice;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.dragon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $dragon;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/dragonBall.svg");
+  width: 380px;
+}
+.tipo__dragon{
+  color: $white;
+  text-align: center;
+  background-color: $dragon;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.dark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $dark;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/darkBall.svg");
+  width: 380px;
+}
+.tipo__dark{
+  color: $white;
+  text-align: center;
+  background-color: $dark;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.fairy{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $fairy;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/fairyBall.svg");
+  width: 380px;
+}
+.tipo__fairy{
+  color: $white;
+  text-align: center;
+  background-color: $fairy;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.unknown{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $unknown;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/unknownBall.svg");
+  width: 380px;
+}
+.tipo__unknown{
+  color: $white;
+  text-align: center;
+  background-color: $unknown;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.shadow{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $shadow;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url("../../imgs/ball/shadowBall.svg");
+  width: 380px;
+}
+.tipo__shadow{
+  color: $white;
+  text-align: center;
+  background-color: $shadow;
+  border-radius: 11px;
+  width: 6em;
+  height: 1.3em;
+}
+
+.pokebola{
+  width: 208px;
+  height: 208px;
+}
+
+.imagem{
+  z-index: 1000;
+  width: 200px;
+  height: 200px;
+}
+
+.titulo{
+  color: $white;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+}
+
+.container{
+  background-color: $white-ice;
+  border: solid;
+  margin-top: -2em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 3em;
+  width: 100%;
+}
+
+.sobre{
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.peso_altura{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 15em;
+}
+
+.peso{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.altura{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.habilidades{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.status{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.status__dados{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

@@ -10,9 +10,12 @@ import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import { BiSearchAlt } from "react-icons/bi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import estilos from "./Home.module.scss";
 import Pokemon from "pages/Pokemon";
+import axios from "axios";
+import IData from "interfaces/IData";
+import Card from "pages/Card";
 
 interface Props {
   inputPokemon: string;
@@ -28,6 +31,8 @@ export default function Home({
   setIsShown,
 }: Props) {
   const [valida, setValida] = useState(false);
+
+
 
   const limpaPokemon = () => {
     setPokemon("");
@@ -60,36 +65,50 @@ export default function Home({
   };
 
   return (
-    <div className={estilos.home}>
-      <TextField
-        error={valida}
-        className={estilos.pesquisa}
-        id="standard-basic"
-        label="Qual o seu pokemon?"
-        type="text"
-        variant="outlined"
-        value={inputPokemon}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <BiSearchAlt
-                type="reset"
-                className={estilos.icon}
-                onClick={handleClick}
-              />
-            </InputAdornment>
-          ),
-        }}
-        onChange={(e) => handleChange(e)}
-      />
-      {isShown && (
-        <Pokemon
-          inputPokemon={inputPokemon}
-          setPokemon={setPokemon}
-          isShown={isShown}
-          setIsShown={setIsShown}
+    <>
+      <div className={estilos.home}>
+        <TextField
+          sx={{ fontWeight: "bold" }}
+          error={valida}
+          className={estilos.pesquisa}
+          id="standard-basic"
+          label="Qual o seu pokemon?"
+          type="text"
+          variant="outlined"
+          value={inputPokemon}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment
+                position="end"
+                className={estilos.icon__container}
+              >
+                <BiSearchAlt
+                  type="submit"
+                  className={estilos.icon__container__icon}
+                  onClick={handleClick}
+                />
+              </InputAdornment>
+            ),
+          }}
+          onChange={(e) => handleChange(e)}
         />
-      )}
-    </div>
+        {isShown && (
+          <Pokemon
+            inputPokemon={inputPokemon}
+            setPokemon={setPokemon}
+            isShown={isShown}
+            setIsShown={setIsShown}
+          />
+        )}
+      </div>
+      <div className={estilos.cads}>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    </>
   );
 }

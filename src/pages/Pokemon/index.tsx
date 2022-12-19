@@ -1,18 +1,15 @@
 import axios from "axios";
 import IData from "interfaces/IData";
-import IHabilidadesNomes from "interfaces/IHabilidadesNomes";
 import estilos from "./Pokemon.module.scss";
 import * as React from "react";
-import Stack from "@mui/material/Stack";
 import CircularProgress, {
   CircularProgressProps,
 } from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
-
 import { useEffect, useState } from "react";
-import classNames from "classnames";
+import { IoScaleOutline } from "react-icons/io5";
+import { GiThermometerScale } from "react-icons/gi";
 
 interface Props {
   inputPokemon: string;
@@ -23,21 +20,33 @@ interface Props {
 
 export default function Pokemon(props: Props) {
   const { inputPokemon, isShown, setPokemon, setIsShown } = props;
+  const inputPokemonReal = inputPokemon.toLowerCase();
 
   const [repositorio, setRepositorio] = useState<IData[]>([]);
-  const valoresrepositorio = Object.values(repositorio);
-  const valoresrepositorioString = valoresrepositorio.map(function (
-    item,
-    indice
-  ) {
-    return item.toString();
-  });
+  // const valoresrepositorio = Object.values(repositorio);
+  // const valoresrepositorioString = valoresrepositorio.map(function (
+  //   item,
+  //   indice
+  // ) {
+  //   return item.toString();
+  // });
 
-  const alturaPokemon = parseFloat(valoresrepositorioString[4]);
-  const pokemonId = parseFloat(valoresrepositorioString[6]);
+  const [altura, setAltura] = useState("");
+  const alturaPokemon = parseFloat(altura);
   const alturaReal = converterAltura(alturaPokemon);
-  const nomePokemon = valoresrepositorioString[10];
-  const pesoPokemon = parseFloat(valoresrepositorioString[17]);
+
+  const [id, setID] = useState("");
+  const pokemonId = parseFloat(id);
+
+  const pokemonIdDivisao = pokemonId / 100;
+
+  // const idSemPonto = id.replace(/,/g, "").replace(/\./g, "");
+
+  const [nomeDoPokemon, setNomeDoPokemon] = useState("");
+  const nomeDoPokemonReal = nomeDoPokemon.toUpperCase();
+
+  const [peso, setPeso] = useState("");
+  const pesoPokemon = parseFloat(peso);
   const presoReal = converterPeso(pesoPokemon);
 
   function converterPeso(NrHg: number) {
@@ -69,27 +78,31 @@ export default function Pokemon(props: Props) {
 
   const [foto, setFoto] = useState<IData[]>([]);
 
-  const [tipo, setTipo] = useState<IData[]>([]);
-  const valoresTipo = Object.values(tipo);
-  const valoresTipoString = valoresTipo.map(function (item, indice) {
-    return item.toString();
-  });
-  const tipoPokemon = valoresTipoString[0];
+  const [tipo1, setTipo1] = useState("" && true);
+  const [tipo2, setTipo2] = useState("" && false);
 
+  const [errou, setErrou] = useState("");
+
+  
   useEffect(() => {
     // obter Pokemon
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${inputPokemon}`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${inputPokemonReal}`)
       .then((resposta) => {
         setRepositorio(resposta.data);
+        console.log(resposta);
+        setAltura(resposta.data.height);
+        setID(resposta.data.id);
+        setNomeDoPokemon(resposta.data.name);
+        setPeso(resposta.data.weight);
         setHP(resposta.data.stats[0].base_stat);
         setAttack(resposta.data.stats[1].base_stat);
         setDefense(resposta.data.stats[2].base_stat);
         setEspecialAttack(resposta.data.stats[3].base_stat);
         setEspecialDefense(resposta.data.stats[4].base_stat);
         setSpeed(resposta.data.stats[5].base_stat);
-        setFoto(resposta.data.sprites.other.dream_world.front_default);
-        setTipo(resposta.data.types[0].type);
+        setFoto(resposta.data.sprites.other["official-artwork"].front_default);
+        setTipo1(resposta.data.types[0].type.name);
         setHabilidadesLength(resposta.data.abilities);
         setHabilidade1(resposta.data.abilities[0].ability.name);
         setHabilidade2(resposta.data.abilities[1].ability.name);
@@ -99,39 +112,31 @@ export default function Pokemon(props: Props) {
       });
   }, []);
 
-  // function carregaHabilidades() {
-  //   if (habilidadesLength > 1) {
-  //     axios
-  //       .get("https://pokeapi.co/api/v2/pokemon/metapod")
-  //       .then((resposta) => {
-  //         setHabilidade1(resposta.data.abilities[0].ability.name);
-  //         console.log(habilidade1);
-  //         setHabilidade2(resposta.data.abilities[1].ability.name);
-  //       })
-  //       .catch((erro) => {
-  //         console.log(erro);
-  //       });
-  //   } else {
-  //     axios
-  //       .get("https://pokeapi.co/api/v2/pokemon/mewtwo")
-  //       .then((resposta) => {
-  //         setHabilidade1(resposta.data.abilities[0].ability.name);
-  //       })
-  //       .catch((erro) => {
-  //         console.log(erro);
-  //       });
-  //   }
-  // }
-
-  // const [progress, setProgress] = React.useState(0);
-
-  const [progress, setProgress] = React.useState(0);
+  useEffect(() => {
+    // obter Pokemon
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${inputPokemonReal}`)
+      .then((resposta) => {
+        setTipo2(resposta.data.types[1].type.name);
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
+  }, []);
 
   function CirculoStatusHP(props: CircularProgressProps & { value: number }) {
     return (
-      <Box sx={{ position: "relative", display: "inline-flex" }}>
-        <CircularProgress variant="determinate" {...props} />
+      <Box
+        className={estilos.ghostgraficos}
+        sx={{ position: "relative", display: "inline-flex" }}
+      >
+        <CircularProgress
+          className={estilos.ghostgraficos}
+          variant="determinate"
+          {...props}
+        />
         <Box
+          className={estilos.ghostgraficos}
           sx={{
             top: 0,
             left: 0,
@@ -141,12 +146,13 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "black"
           }}
         >
           <Typography
+            className={estilos.ghostgraficos}
             variant="caption"
             component="div"
-            color="text.secondary"
           >{`${Math.round(hpReal)}`}</Typography>
         </Box>
       </Box>
@@ -167,13 +173,12 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "black"
           }}
         >
-          <Typography
-            variant="caption"
-            component="div"
-            color="text.secondary"
-          >{`${Math.round(attackReal)}`}</Typography>
+          <Typography variant="caption" component="div">{`${Math.round(
+            attackReal
+          )}`}</Typography>
         </Box>
       </Box>
     );
@@ -193,13 +198,12 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "black"
           }}
         >
-          <Typography
-            variant="caption"
-            component="div"
-            color="text.secondary"
-          >{`${Math.round(defenseReal)}`}</Typography>
+          <Typography variant="caption" component="div">{`${Math.round(
+            defenseReal
+          )}`}</Typography>
         </Box>
       </Box>
     );
@@ -219,13 +223,12 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "black"
           }}
         >
-          <Typography
-            variant="caption"
-            component="div"
-            color="text.secondary"
-          >{`${Math.round(eAttackReal)}`}</Typography>
+          <Typography variant="caption" component="div">{`${Math.round(
+            eAttackReal
+          )}`}</Typography>
         </Box>
       </Box>
     );
@@ -245,13 +248,12 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "black"
           }}
         >
-          <Typography
-            variant="caption"
-            component="div"
-            color="text.secondary"
-          >{`${Math.round(eDefenseReal)}`}</Typography>
+          <Typography variant="caption" component="div">{`${Math.round(
+            eDefenseReal
+          )}`}</Typography>
         </Box>
       </Box>
     );
@@ -271,82 +273,92 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            color: "black"
           }}
         >
-          <Typography
-            variant="caption"
-            component="div"
-            color="text.secondary"
-          >{`${Math.round(speedReal)}`}</Typography>
+          <Typography variant="caption" component="div">{`${Math.round(
+            speedReal
+          )}`}</Typography>
         </Box>
       </Box>
     );
   }
 
+
   return (
-    <div className={estilos[`${tipoPokemon}`]}>
+    <div className={estilos[`${tipo1}`]}>
       <div className={estilos.titulo}>
-        <h1>{nomePokemon}</h1>
-        <p>#00{pokemonId}</p>
+        <h1>{nomeDoPokemonReal}</h1>
+        <p className={estilos.id}>#{pokemonId}</p>
       </div>
+      <div>{errou}</div>
       <img className={estilos.imagem} src={`${foto}`} />
       <div className={estilos.container}>
-        <div className={estilos[`tipo__${tipoPokemon}`]}>{tipoPokemon}</div>
-        <div className={estilos.sobre}>
-          <h2>About</h2>
+        <div className={estilos.tipos}>
+          <div className={estilos[`tipo__${tipo1}`]}>{tipo1}</div>
+          <div className={estilos[`tipo__${tipo2}`]}>{tipo2}</div>
+        </div>
+        <div className={estilos[`${tipo1}__sobre`]}>
+          <h2 className={estilos[`${tipo1}__sobre__titulo`]}>About</h2>
           <div className={estilos.peso_altura}>
             <div className={estilos.peso}>
-              <a>weight</a>
-              <a>{presoReal} Kg</a>
+              <a  className={estilos.peso_altura__titulo}>Weight</a>
+              <div className={estilos.pesoAltura__container}>
+                <IoScaleOutline className={estilos.pesoAltura__container__icon}/>
+                <a>{presoReal} Kg</a>
+              </div>
             </div>
             <div className={estilos.altura}>
-              <a>height</a>
-              <a>{alturaReal} m</a>
+              <a className={estilos.peso_altura__titulo}>Height</a>
+              <div className={estilos.pesoAltura__container}>
+                <GiThermometerScale className={estilos.pesoAltura__container__icon}/>
+                <a>{alturaReal} m</a>
+              </div>
             </div>
             <div className={estilos.habilidades}>
-              <a>Habilidades</a>
+              <a className={estilos.peso_altura__titulo}>Moves</a>
               <a>{habilidade1}</a>
               <a>{habilidade2}</a>
             </div>
           </div>
         </div>
-        <div className={estilos.status}>
-          <h2>Base Stats</h2>
+        <div className={estilos[`${tipo1}__status`]}>
+          <h2 className={estilos[`${tipo1}__status__titulo`]}>Base Stats</h2>
           <Box className={estilos.status__dados}>
-            <div>
-              <div>HP</div>
+            <div className={estilos.graficos}>
+              <div className={estilos.titulo__atributos}>HP</div>
               <div>
-                <CirculoStatusHP value={hpReal / 3} />
+                <CirculoStatusHP value={hpReal / 2} />
               </div>
             </div>
-            <div>
+            <div className={estilos.graficos}>
               <div>ATK</div>
               <div>
-                <CirculoStatusATK value={attackReal / 3} />
+                <CirculoStatusATK  value={attackReal / 2} />
               </div>
             </div>
-            <div>
+            <div className={estilos.graficos}>
               <div>DEF</div>
               <div>
-                <CirculoStatusDEF value={defenseReal / 3} />
+                <CirculoStatusDEF  value={defenseReal / 2} />
               </div>
             </div>
-            <div>
+            <div className={estilos.graficos}>
               <div>SATK</div>
               <div>
-                <CirculoStatusSATK value={eAttackReal / 3} />
+                <CirculoStatusSATK  value={eAttackReal / 2} />
               </div>
             </div>
-            <div>
+            <div className={estilos.graficos}>
               <div>SDEF</div>
               <div>
-                <CirculoStatusSDEF value={eDefenseReal / 3} />
+                <CirculoStatusSDEF  value={eDefenseReal / 2} />
               </div>
             </div>
-            <div>
+            <div className={estilos.graficos}>
               <div>SPD</div>
               <div>
-                <CirculoStatusSPD value={speedReal / 3} />
+                <CirculoStatusSPD  value={speedReal / 2} />
               </div>
             </div>
           </Box>

@@ -12,4 +12,5 @@ export default interface IData {
   sprites: IFoto[]
   status: IStatus[]
   tipo: ITipo[]
+  color: string
 }

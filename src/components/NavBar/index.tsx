@@ -1,6 +1,13 @@
 import * as React from "react";
+import { styled, alpha } from "@mui/material/styles";
+import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import InputBase from "@mui/material/InputBase";
+// import MenuIcon from "@mui/icons-material/MenuIcon";
+// import SearchIcon from "@mui/icons-material/SearchIcon";
 import Input from "@mui/material/Input";
 import FilledInput from "@mui/material/FilledInput";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -11,13 +18,13 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import { BiSearchAlt } from "react-icons/bi";
 import { useEffect, useState } from "react";
-import estilos from "./Home.module.scss";
+import estilos from "./NavBar.module.scss";
 import Pokemon from "pages/Pokemon";
 import axios from "axios";
 import IData from "interfaces/IData";
 import Card from "pages/Card";
 import Loading from "pages/Pokedex";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
   inputPokemon: string;
@@ -26,16 +33,14 @@ interface Props {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Home({
+export default function NavBar({
   inputPokemon,
   isShown,
   setPokemon,
   setIsShown,
 }: Props) {
-
-
   const [valida, setValida] = useState(false);
-  
+
   const navigate = useNavigate();
 
   const limpaPokemon = () => {
@@ -80,44 +85,48 @@ export default function Home({
   }, []);
 
   return (
-    <>
-      <div className={estilos.home}>
-        {isShown && (
-          <Pokemon
-            inputPokemon={inputPokemon}
-            setPokemon={setPokemon}
-            isShown={isShown}
-            setIsShown={setIsShown}
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar className={estilos.navbarra} position="static">
+        <Toolbar>
+          <nav className={estilos.navbarra}>
+            <Link to="/pokedex" className={estilos.navbarra__link}>
+              Pokédex
+            </Link>
+            <a
+              onClick={() => window.open("https://pokemon-app-psi-ten.vercel.app/")}
+              className={estilos.navbarra__link}
+            >
+              Game
+            </a>
+          </nav>
+          <TextField
+            sx={{ fontWeight: "bold" }}
+            error={valida}
+            className={estilos.pesquisa}
+            id="standard-basic"
+            label="Search..."
+            type="text"
+            variant="filled"
+            value={inputPokemon}
+            onKeyDown={handleKeyDown}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  className={estilos.icon__container}
+                >
+                  <BiSearchAlt
+                    type="submit"
+                    className={estilos.icon__container__icon}
+                    onClick={handleClick}
+                  />
+                </InputAdornment>
+              ),
+            }}
+            onChange={(e) => handleChange(e)}
           />
-        )}
-      </div>
-      <div></div>
-      <div className={estilos.cads}>
-        <Card
-          inputPokemon={inputPokemon}
-          setPokemon={setPokemon}
-          isShown={isShown}
-          setIsShown={setIsShown}
-        />
-        <Card
-          inputPokemon={inputPokemon}
-          setPokemon={setPokemon}
-          isShown={isShown}
-          setIsShown={setIsShown}
-        />
-        <Card
-          inputPokemon={inputPokemon}
-          setPokemon={setPokemon}
-          isShown={isShown}
-          setIsShown={setIsShown}
-        />
-        <Card
-          inputPokemon={inputPokemon}
-          setPokemon={setPokemon}
-          isShown={isShown}
-          setIsShown={setIsShown}
-        />
-      </div>
-    </>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }

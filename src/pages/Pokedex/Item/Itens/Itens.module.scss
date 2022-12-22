@@ -3,12 +3,16 @@
 @import 'styles/variaveis';
 @import "styles/breakpoints";
 
+.teste{
+  display: flex;
+}
+
 .normal{
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: $normal;
-  margin-top: 3em;
+  margin: 2em 0.5em;
   border-radius: 11px;
   width: 190px;
   height: 296px;
@@ -22,7 +26,7 @@
     background-color: $white-ice;
     background-position: top center;
     background-repeat: no-repeat;
-    background-image: url("../../imgs/ball/normalBall.svg");
+    background-image: url("../../../../imgs/ball/normalBall.svg");
     width: 180px;
     height: 268px;
     margin-top: 3px;
@@ -56,7 +60,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $fighting;
-    margin-top: 3em;
+    margin: 2em 0.5em;
     border-radius: 11px;
     width: 190px;
     height: 296px;
@@ -70,7 +74,7 @@
       background-color: $white-ice;
       background-position: top center;
       background-repeat: no-repeat;
-      background-image: url("../../imgs/ball/fightingBall.svg");
+      background-image: url("../../../../imgs/ball/fightingBall.svg");
       width: 180px;
       height: 268px;
       margin-top: 3px;
@@ -104,7 +108,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $flying;
-  margin-top: 3em;
+  margin: 2em 0.5em;
   border-radius: 11px;
   width: 190px;
   height: 296px;
@@ -118,7 +122,7 @@
     background-color: $white-ice;
     background-position: top center;
     background-repeat: no-repeat;
-    background-image: url("../../imgs/ball/flyingBall.svg");
+    background-image: url("../../../../imgs/ball/flyingBall.svg");
     width: 180px;
     height: 268px;
     margin-top: 3px;
@@ -152,7 +156,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $poison;
-    margin-top: 3em;
+    margin: 2em 0.5em;
     border-radius: 11px;
     width: 190px;
     height: 296px;
@@ -166,7 +170,7 @@
       background-color: $white-ice;
       background-position: top center;
       background-repeat: no-repeat;
-      background-image: url("../../imgs/ball/poisonBall.svg");
+      background-image: url("../../../../imgs/ball/poisonBall.svg");
       width: 180px;
       height: 268px;
       margin-top: 3px;
@@ -200,7 +204,7 @@
       flex-direction: column;
       align-items: center;
       background-color: $rock;
-      margin-top: 3em;
+      margin: 2em 0.5em;
       border-radius: 11px;
       width: 190px;
       height: 296px;
@@ -214,7 +218,7 @@
         background-color: $white-ice;
         background-position: top center;
         background-repeat: no-repeat;
-        background-image: url("../../imgs/ball/rockBall.svg");
+        background-image: url("../../../../imgs/ball/rockBall.svg");
         width: 180px;
         height: 268px;
         margin-top: 3px;
@@ -248,7 +252,7 @@
         flex-direction: column;
         align-items: center;
         background-color: $bug;
-        margin-top: 3em;
+        margin: 2em 0.5em;
         border-radius: 11px;
         width: 190px;
         height: 296px;
@@ -262,7 +266,7 @@
           background-color: $white-ice;
           background-position: top center;
           background-repeat: no-repeat;
-          background-image: url("../../imgs/ball/bugBall.svg");
+          background-image: url("../../../../imgs/ball/bugBall.svg");
           width: 180px;
           height: 268px;
           margin-top: 3px;
@@ -296,7 +300,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $steel;
-  margin-top: 3em;
+  margin: 2em 0.5em;
   border-radius: 11px;
   width: 190px;
   height: 296px;
@@ -310,7 +314,7 @@
     background-color: $white-ice;
     background-position: top center;
     background-repeat: no-repeat;
-    background-image: url("../../imgs/ball/steelBall.svg");
+    background-image: url("../../../../imgs/ball/steelBall.svg");
     width: 180px;
     height: 268px;
     margin-top: 3px;
@@ -344,7 +348,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $fire;
-    margin-top: 3em;
+    margin: 2em 0.5em;
     border-radius: 11px;
     width: 190px;
     height: 296px;
@@ -358,7 +362,7 @@
       background-color: $white-ice;
       background-position: top center;
       background-repeat: no-repeat;
-      background-image: url("../../imgs/ball/fireBall.svg");
+      background-image: url("../../../../imgs/ball/fireBall.svg");
       width: 180px;
       height: 268px;
       margin-top: 3px;
@@ -392,7 +396,7 @@
       flex-direction: column;
       align-items: center;
       background-color: $grass;
-      margin-top: 3em;
+      margin: 2em 0.5em;
       border-radius: 11px;
       width: 190px;
       height: 296px;
@@ -406,7 +410,7 @@
         background-color: $white-ice;
         background-position: top center;
         background-repeat: no-repeat;
-        background-image: url("../../imgs/ball/grassBall.svg");
+        background-image: url("../../../../imgs/ball/grassBall.svg");
         width: 180px;
         height: 268px;
         margin-top: 3px;
@@ -440,7 +444,7 @@
         flex-direction: column;
         align-items: center;
         background-color: $water;
-        margin-top: 3em;
+        margin: 2em 0.5em;
         border-radius: 11px;
         width: 190px;
         height: 296px;
@@ -454,7 +458,7 @@
           background-color: $white-ice;
           background-position: top center;
           background-repeat: no-repeat;
-          background-image: url("../../imgs/ball/waterBall.svg");
+          background-image: url("../../../../imgs/ball/waterBall.svg");
           width: 180px;
           height: 268px;
           margin-top: 3px;
@@ -488,7 +492,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $electric;
-  margin-top: 3em;
+  margin: 2em 0.5em;
   border-radius: 11px;
   width: 190px;
   height: 296px;
@@ -502,7 +506,7 @@
     background-color: $white-ice;
     background-position: top center;
     background-repeat: no-repeat;
-    background-image: url("../../imgs/ball/electricBall.svg");
+    background-image: url("../../../../imgs/ball/electricBall.svg");
     width: 180px;
     height: 268px;
     margin-top: 3px;
@@ -536,7 +540,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $psychic;
-    margin-top: 3em;
+    margin: 2em 0.5em;
     border-radius: 11px;
     width: 190px;
     height: 296px;
@@ -550,7 +554,7 @@
       background-color: $white-ice;
       background-position: top center;
       background-repeat: no-repeat;
-      background-image: url("../../imgs/ball/psychicBall.svg");
+      background-image: url("../../../../imgs/ball/psychicBall.svg");
       width: 180px;
       height: 268px;
       margin-top: 3px;
@@ -584,7 +588,7 @@
       flex-direction: column;
       align-items: center;
       background-color: $ice;
-      margin-top: 3em;
+      margin: 2em 0.5em;
       border-radius: 11px;
       width: 190px;
       height: 296px;
@@ -598,7 +602,7 @@
         background-color: $white-ice;
         background-position: top center;
         background-repeat: no-repeat;
-        background-image: url("../../imgs/ball/iceBall.svg");
+        background-image: url("../../../../imgs/ball/iceBall.svg");
         width: 180px;
         height: 268px;
         margin-top: 3px;
@@ -632,7 +636,7 @@
         flex-direction: column;
         align-items: center;
         background-color: $dragon;
-        margin-top: 3em;
+        margin: 2em 0.5em;
         border-radius: 11px;
         width: 190px;
         height: 296px;
@@ -646,7 +650,7 @@
           background-color: $white-ice;
           background-position: top center;
           background-repeat: no-repeat;
-          background-image: url("../../imgs/ball/dragonBall.svg");
+          background-image: url("../../../../imgs/ball/dragonBall.svg");
           width: 180px;
           height: 268px;
           margin-top: 3px;
@@ -680,7 +684,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $dark;
-  margin-top: 3em;
+  margin: 2em 0.5em;
   border-radius: 11px;
   width: 190px;
   height: 296px;
@@ -694,7 +698,7 @@
     background-color: $white-ice;
     background-position: top center;
     background-repeat: no-repeat;
-    background-image: url("../../imgs/ball/darkBall.svg");
+    background-image: url("../../../../imgs/ball/darkBall.svg");
     width: 180px;
     height: 268px;
     margin-top: 3px;
@@ -728,7 +732,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $fairy;
-    margin-top: 3em;
+    margin: 2em 0.5em;
     border-radius: 11px;
     width: 190px;
     height: 296px;
@@ -742,7 +746,7 @@
       background-color: $white-ice;
       background-position: top center;
       background-repeat: no-repeat;
-      background-image: url("../../imgs/ball/fairyBall.svg");
+      background-image: url("../../../../imgs/ball/fairyBall.svg");
       width: 180px;
       height: 268px;
       margin-top: 3px;
@@ -776,7 +780,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $unknown;
-  margin-top: 3em;
+  margin: 2em 0.5em;
   border-radius: 11px;
   width: 190px;
   height: 296px;
@@ -790,7 +794,7 @@
     background-color: $white-ice;
     background-position: top center;
     background-repeat: no-repeat;
-    background-image: url("../../imgs/ball/unknownBall.svg");
+    background-image: url("../../../../imgs/ball/unknownBall.svg");
     width: 180px;
     height: 268px;
     margin-top: 3px;
@@ -824,7 +828,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $shadow;
-    margin-top: 3em;
+    margin: 2em 0.5em;
     border-radius: 11px;
     width: 190px;
     height: 296px;
@@ -838,7 +842,7 @@
       background-color: $white-ice;
       background-position: top center;
       background-repeat: no-repeat;
-      background-image: url("../../imgs/ball/shadowBall.svg");
+      background-image: url("../../../../imgs/ball/shadowBall.svg");
       width: 180px;
       height: 268px;
       margin-top: 3px;
@@ -872,7 +876,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $ghost;
-    margin-top: 3em;
+    margin: 2em 0.5em;
     border-radius: 11px;
     width: 190px;
     height: 296px;
@@ -886,7 +890,7 @@
       background-color: $white-ice;
       background-position: top center;
       background-repeat: no-repeat;
-      background-image: url("../../imgs/ball/ghostBall.svg");
+      background-image: url("../../../../imgs/ball/ghostBall.svg");
       width: 180px;
       height: 268px;
       margin-top: 3px;
@@ -920,7 +924,7 @@
   flex-direction: column;
   align-items: center;
   background-color: $grass;
-  margin-top: 3em;
+  margin: 2em 0.5em;
   border-radius: 11px;
   width: 190px;
   height: 296px;
@@ -934,7 +938,7 @@
     background-color: $white-ice;
     background-position: top center;
     background-repeat: no-repeat;
-    background-image: url("../../imgs/ball/grassBall.svg");
+    background-image: url("../../../../imgs/ball/grassBall.svg");
     width: 180px;
     height: 268px;
     margin-top: 3px;

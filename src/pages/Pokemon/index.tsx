@@ -10,6 +10,9 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { IoScaleOutline } from "react-icons/io5";
 import { GiThermometerScale } from "react-icons/gi";
+import Loading from "pages/Pokedex";
+import { useNavigate } from "react-router-dom";
+import { url } from "inspector";
 
 interface Props {
   inputPokemon: string;
@@ -19,17 +22,15 @@ interface Props {
 }
 
 export default function Pokemon(props: Props) {
-  const { inputPokemon, isShown, setPokemon, setIsShown } = props;
+  const {
+    inputPokemon,
+    isShown,
+    setPokemon,
+    setIsShown,
+  } = props;
   const inputPokemonReal = inputPokemon.toLowerCase();
 
-  const [repositorio, setRepositorio] = useState<IData[]>([]);
-  // const valoresrepositorio = Object.values(repositorio);
-  // const valoresrepositorioString = valoresrepositorio.map(function (
-  //   item,
-  //   indice
-  // ) {
-  //   return item.toString();
-  // });
+  const navigate = useNavigate();
 
   const [altura, setAltura] = useState("");
   const alturaPokemon = parseFloat(altura);
@@ -44,25 +45,11 @@ export default function Pokemon(props: Props) {
 
   const [nomeDoPokemon, setNomeDoPokemon] = useState("");
   const nomeDoPokemonReal = nomeDoPokemon.toUpperCase();
-
   const [peso, setPeso] = useState("");
   const pesoPokemon = parseFloat(peso);
   const presoReal = converterPeso(pesoPokemon);
-
-  function converterPeso(NrHg: number) {
-    return NrHg / 10;
-  }
-
-  function converterAltura(NrDm: number) {
-    return NrDm / 10;
-  }
-
-  const [habilidadesLength, setHabilidadesLength] = useState<IData[]>([]);
-
   const [habilidade1, setHabilidade1] = useState("");
-
   const [habilidade2, setHabilidade2] = useState("");
-
   const [hp, setHP] = useState("");
   const hpReal = parseFloat(hp);
   const [attack, setAttack] = useState("");
@@ -75,37 +62,61 @@ export default function Pokemon(props: Props) {
   const eDefenseReal = parseFloat(eDefense);
   const [speed, setSpeed] = useState("");
   const speedReal = parseFloat(speed);
-
-  const [foto, setFoto] = useState<IData[]>([]);
-
+  const [foto, setFoto] = useState("");
   const [tipo1, setTipo1] = useState("" && true);
   const [tipo2, setTipo2] = useState("" && false);
-
   const [errou, setErrou] = useState("");
-
   
+  function converterPeso(NrHg: number) {
+    return NrHg / 10;
+  }
+  function converterAltura(NrDm: number) {
+    return NrDm / 10;
+  }
+  
+
   useEffect(() => {
     // obter Pokemon
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${inputPokemonReal}`)
       .then((resposta) => {
-        setRepositorio(resposta.data);
-        console.log(resposta);
-        setAltura(resposta.data.height);
-        setID(resposta.data.id);
+        setTipo1(resposta.data.types[0].type.name);
         setNomeDoPokemon(resposta.data.name);
+        setID(resposta.data.id);
+        setFoto(resposta.data.sprites.other["official-artwork"].front_default);
         setPeso(resposta.data.weight);
+        setAltura(resposta.data.height);
         setHP(resposta.data.stats[0].base_stat);
         setAttack(resposta.data.stats[1].base_stat);
         setDefense(resposta.data.stats[2].base_stat);
         setEspecialAttack(resposta.data.stats[3].base_stat);
         setEspecialDefense(resposta.data.stats[4].base_stat);
         setSpeed(resposta.data.stats[5].base_stat);
-        setFoto(resposta.data.sprites.other["official-artwork"].front_default);
-        setTipo1(resposta.data.types[0].type.name);
-        setHabilidadesLength(resposta.data.abilities);
         setHabilidade1(resposta.data.abilities[0].ability.name);
-        setHabilidade2(resposta.data.abilities[1].ability.name);
+      })
+      .catch((erro) => { 
+        setTipo1("unknown");
+        setNomeDoPokemon("Unknown");
+        setID("0");
+        setPeso("0");
+        setAltura("0");
+        setHabilidade1("Missing");
+        setHP("0");
+        setAttack("0");
+        setDefense("0");
+        setEspecialAttack("0");
+        setEspecialDefense("0");
+        setSpeed("0");
+        console.log(erro);
+      });
+  }, []);
+
+  useEffect(() => {
+    // obter Pokemon
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${inputPokemonReal}`)
+      .then((resposta) => {
+        setTipo2(resposta.data.types[1].type.name);
       })
       .catch((erro) => {
         console.log(erro);
@@ -117,7 +128,7 @@ export default function Pokemon(props: Props) {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${inputPokemonReal}`)
       .then((resposta) => {
-        setTipo2(resposta.data.types[1].type.name);
+        setHabilidade2(resposta.data.abilities[1].ability.name);
       })
       .catch((erro) => {
         console.log(erro);
@@ -146,7 +157,7 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "black"
+            color: "black",
           }}
         >
           <Typography
@@ -173,7 +184,7 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "black"
+            color: "black",
           }}
         >
           <Typography variant="caption" component="div">{`${Math.round(
@@ -198,7 +209,7 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "black"
+            color: "black",
           }}
         >
           <Typography variant="caption" component="div">{`${Math.round(
@@ -223,7 +234,7 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "black"
+            color: "black",
           }}
         >
           <Typography variant="caption" component="div">{`${Math.round(
@@ -248,7 +259,7 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "black"
+            color: "black",
           }}
         >
           <Typography variant="caption" component="div">{`${Math.round(
@@ -273,7 +284,7 @@ export default function Pokemon(props: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "black"
+            color: "black",
           }}
         >
           <Typography variant="caption" component="div">{`${Math.round(
@@ -284,86 +295,98 @@ export default function Pokemon(props: Props) {
     );
   }
 
+  // const  = () =>  {
+  //   if (isShown) {
+  //     alert("ele esta ativo");
+  //   } else {
+  //     alert("ele nao esta ativo");
+  //   }
+  // };
 
   return (
-    <div className={estilos[`${tipo1}`]}>
-      <div className={estilos.titulo}>
-        <h1>{nomeDoPokemonReal}</h1>
-        <p className={estilos.id}>#{pokemonId}</p>
-      </div>
-      <div>{errou}</div>
-      <img className={estilos.imagem} src={`${foto}`} />
-      <div className={estilos.container}>
-        <div className={estilos.tipos}>
-          <div className={estilos[`tipo__${tipo1}`]}>{tipo1}</div>
-          <div className={estilos[`tipo__${tipo2}`]}>{tipo2}</div>
+    <>
+      <div className={estilos[`${tipo1}`]}>
+        <div className={estilos.titulo}>
+          <h1>{nomeDoPokemonReal}</h1>
+          <p className={estilos.id}>#{pokemonId}</p>
         </div>
-        <div className={estilos[`${tipo1}__sobre`]}>
-          <h2 className={estilos[`${tipo1}__sobre__titulo`]}>About</h2>
-          <div className={estilos.peso_altura}>
-            <div className={estilos.peso}>
-              <a  className={estilos.peso_altura__titulo}>Weight</a>
-              <div className={estilos.pesoAltura__container}>
-                <IoScaleOutline className={estilos.pesoAltura__container__icon}/>
-                <a>{presoReal} Kg</a>
+        <img className={estilos.imagem} src={`${foto}`} />
+        <div className={estilos.container}>
+          <div className={estilos.tipos}>
+            <div className={estilos[`tipo__${tipo1}`]}>{tipo1}</div>
+            <div className={estilos[`tipo__${tipo2}`]}>{tipo2}</div>
+          </div>
+          <div className={estilos[`${tipo1}__sobre`]}>
+            <h2 className={estilos[`${tipo1}__sobre__titulo`]}>About</h2>
+            <div className={estilos.peso_altura}>
+              <div className={estilos.peso}>
+                <a className={estilos.peso_altura__titulo}>Weight</a>
+                <div className={estilos.pesoAltura__container}>
+                  <IoScaleOutline
+                    className={estilos.pesoAltura__container__icon}
+                  />
+                  <a>{presoReal} Kg</a>
+                </div>
               </div>
-            </div>
-            <div className={estilos.altura}>
-              <a className={estilos.peso_altura__titulo}>Height</a>
-              <div className={estilos.pesoAltura__container}>
-                <GiThermometerScale className={estilos.pesoAltura__container__icon}/>
-                <a>{alturaReal} m</a>
+              <div className={estilos.altura}>
+                <a className={estilos.peso_altura__titulo}>Height</a>
+                <div className={estilos.pesoAltura__container}>
+                  <GiThermometerScale
+                    className={estilos.pesoAltura__container__icon}
+                  />
+                  <a>{alturaReal} m</a>
+                </div>
               </div>
-            </div>
-            <div className={estilos.habilidades}>
-              <a className={estilos.peso_altura__titulo}>Moves</a>
-              <a>{habilidade1}</a>
-              <a>{habilidade2}</a>
+              <div className={estilos.habilidades}>
+                <a className={estilos.peso_altura__titulo}>Moves</a>
+                <a>{habilidade1}</a>
+                <a>{habilidade2}</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={estilos[`${tipo1}__status`]}>
-          <h2 className={estilos[`${tipo1}__status__titulo`]}>Base Stats</h2>
-          <Box className={estilos.status__dados}>
-            <div className={estilos.graficos}>
-              <div className={estilos.titulo__atributos}>HP</div>
-              <div>
-                <CirculoStatusHP value={hpReal / 2} />
+          <div className={estilos[`${tipo1}__status`]}>
+            <h2 className={estilos[`${tipo1}__status__titulo`]}>Base Stats</h2>
+            <Box className={estilos.status__dados}>
+              <div className={estilos.graficos}>
+                <div className={estilos.titulo__atributos}>HP</div>
+                <div>
+                  <CirculoStatusHP value={hpReal / 2} />
+                </div>
               </div>
-            </div>
-            <div className={estilos.graficos}>
-              <div>ATK</div>
-              <div>
-                <CirculoStatusATK  value={attackReal / 2} />
+              <div className={estilos.graficos}>
+                <div>ATK</div>
+                <div>
+                  <CirculoStatusATK value={attackReal / 2} />
+                </div>
               </div>
-            </div>
-            <div className={estilos.graficos}>
-              <div>DEF</div>
-              <div>
-                <CirculoStatusDEF  value={defenseReal / 2} />
+              <div className={estilos.graficos}>
+                <div>DEF</div>
+                <div>
+                  <CirculoStatusDEF value={defenseReal / 2} />
+                </div>
               </div>
-            </div>
-            <div className={estilos.graficos}>
-              <div>SATK</div>
-              <div>
-                <CirculoStatusSATK  value={eAttackReal / 2} />
+              <div className={estilos.graficos}>
+                <div>SATK</div>
+                <div>
+                  <CirculoStatusSATK value={eAttackReal / 2} />
+                </div>
               </div>
-            </div>
-            <div className={estilos.graficos}>
-              <div>SDEF</div>
-              <div>
-                <CirculoStatusSDEF  value={eDefenseReal / 2} />
+              <div className={estilos.graficos}>
+                <div>SDEF</div>
+                <div>
+                  <CirculoStatusSDEF value={eDefenseReal / 2} />
+                </div>
               </div>
-            </div>
-            <div className={estilos.graficos}>
-              <div>SPD</div>
-              <div>
-                <CirculoStatusSPD  value={speedReal / 2} />
+              <div className={estilos.graficos}>
+                <div>SPD</div>
+                <div>
+                  <CirculoStatusSPD value={speedReal / 2} />
+                </div>
               </div>
-            </div>
-          </Box>
+            </Box>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -8,6 +8,7 @@ export default interface IData {
   abilities: IHabilidades[]
   id: number
   name: string
+  url: string
   order: number
   sprites: IFoto[]
   status: IStatus[]

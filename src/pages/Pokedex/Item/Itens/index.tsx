@@ -2,19 +2,19 @@ import axios from "axios";
 import IData from "interfaces/IData";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import estilos from "./Card.module.scss";
+import estilos from "./Itens.module.scss";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
+  name: string;
+  url: string;
   inputPokemon: string;
   isShown: boolean;
   setPokemon: React.Dispatch<React.SetStateAction<string>>;
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Card(props: Props) {
-  const { inputPokemon, isShown, setPokemon, setIsShown } = props;
-
-  const [repositorio, setRepositorio] = useState<IData[]>([]);
+export default function Itens(props: Props) {
   const [nomeDoPokemon, setNomeDoPokemon] = useState("");
   const nomePokemonReal = nomeDoPokemon.toUpperCase();
   const inputPokemonReal = nomePokemonReal.toLowerCase();
@@ -24,12 +24,13 @@ export default function Card(props: Props) {
   const [tipo1, setTipo1] = useState("" && true);
   const [sorteio, setSorteio] = useState<number[]>([]);
 
+  const { name, url, inputPokemon, isShown, setPokemon, setIsShown } = props;
+
   useEffect(() => {
     // obter Pokemon
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${numero1}`)
+      .get(url)
       .then((resposta) => {
-        setRepositorio(resposta.data);
         setID(resposta.data.id);
         setNomeDoPokemon(resposta.data.name);
         setFoto(resposta.data.sprites.other["official-artwork"].front_default);
@@ -39,29 +40,6 @@ export default function Card(props: Props) {
         console.log(erro);
       });
   }, []);
-
-  // useEffect(() => {
-  //   const maxNumbers = 1000;
-  //   const list = [];
-  //   for (let i = 0; i < maxNumbers; i++) {
-  //     list[i] = i + 1;
-  //   }
-
-  //   let randomNumber;
-  //   let tmp;
-  //   for (let i = list.length; i; ) {
-  //     randomNumber = (Math.random() * i--) | 0;
-  //     tmp = list[randomNumber];
-  //     // troca o número aleatório pelo atual
-  //     list[randomNumber] = list[i];
-  //     // troca o atual pelo aleatório
-  //     list[i] = tmp;
-  //     console.log(sorteio[1]);
-  //   }
-  //   console.log(list[1]);
-  // }, []);
-
-  const numero1 = Math.floor(Math.random() * 891);
 
   const limpaPokemon = () => {
     setPokemon("");
@@ -75,46 +53,44 @@ export default function Card(props: Props) {
   };
 
   const handleClick = () => {
+    console.log(inputPokemonReal);
     if (!isShown) {
       setIsShown(true);
       setPokemon(inputPokemonReal);
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
       setTimeout(limpaPokemon, 2000);
-
     } else if (isShown) {
-
       setTimeout(recarrega1, 100);
       setTimeout(recarrega2, 150);
       setPokemon(inputPokemonReal);
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       });
       setTimeout(limpaPokemon, 2000);
     }
   };
 
   return (
-    <div
-      className={estilos[`${tipo1}`]}
-      onClick={handleClick}
-    >
-      <div className={estilos[`${tipo1}__card`]}>
-        <div>
-          <div className={estilos.titulo}>
-            <p className={estilos[`${tipo1}__id`]}>#{pokemonId}</p>
-          </div>
-          <img className={estilos[`${tipo1}__imagem`]} src={`${foto}`} />
-          <div className={estilos[`${tipo1}__cabecalho`]}>
-            <h1 className={estilos[`${tipo1}__cabecalho__titulo`]}>
-              {nomePokemonReal}
-            </h1>
+    <>
+      <div className={estilos[`${tipo1}`]} onClick={handleClick}>
+        <div className={estilos[`${tipo1}__card`]}>
+          <div>
+            <div className={estilos.titulo}>
+              <p className={estilos[`${tipo1}__id`]}>#{pokemonId}</p>
+            </div>
+            <img className={estilos[`${tipo1}__imagem`]} src={`${foto}`} />
+            <div className={estilos[`${tipo1}__cabecalho`]}>
+              <h1 className={estilos[`${tipo1}__cabecalho__titulo`]}>
+                {nomePokemonReal}
+              </h1>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

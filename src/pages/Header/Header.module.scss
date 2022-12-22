@@ -1,7 +1,15 @@
 .cabecalho{
+  width: 100%;
+  height: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagemDeFundo{
   background-image: url("../../imgs/Logo.svg");
   background-repeat: no-repeat;
   background-position: top center;
-  width: 100%;
+  width: 281px;
   height: 104px;
 }

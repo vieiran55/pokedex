@@ -40,27 +40,6 @@ export default function Card(props: Props) {
       });
   }, []);
 
-  // useEffect(() => {
-  //   const maxNumbers = 1000;
-  //   const list = [];
-  //   for (let i = 0; i < maxNumbers; i++) {
-  //     list[i] = i + 1;
-  //   }
-
-  //   let randomNumber;
-  //   let tmp;
-  //   for (let i = list.length; i; ) {
-  //     randomNumber = (Math.random() * i--) | 0;
-  //     tmp = list[randomNumber];
-  //     // troca o número aleatório pelo atual
-  //     list[randomNumber] = list[i];
-  //     // troca o atual pelo aleatório
-  //     list[i] = tmp;
-  //     console.log(sorteio[1]);
-  //   }
-  //   console.log(list[1]);
-  // }, []);
-
   const numero1 = Math.floor(Math.random() * 891);
 
   const limpaPokemon = () => {

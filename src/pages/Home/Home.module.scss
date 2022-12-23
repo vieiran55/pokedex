@@ -36,5 +36,11 @@
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
+    @media (min-width: $desktop_xsm) {
+      width: 90%;
+    }
+    @media (min-width: $desktop_md) {
+      width: 900px;
+    }
 }
 

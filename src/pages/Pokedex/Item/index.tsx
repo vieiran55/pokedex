@@ -31,30 +31,11 @@ export default function Item(props: Props) {
     setIsShown,
   } = props;
 
-  // const nextee = () => {
-  //   setIsShown(true);
-  //   setTimeout(recarrega1, 100);
-  //   setTimeout(recarrega2, 150);
-  //   setUrl(next);
-  //   console.log(`next ${next}`);
-  //   console.log(`url ${url}`);
-  // };
-
-  const recarrega1 = () => {
-    setIsShown(!true);
-  };
-
-  const recarrega2 = () => {
-    setIsShown(true);
-  };
-
-
   const [repositorio, setRepositorio] = useState<IData[]>([]);
   const [id, setID] = useState("");
   const pokemonId = parseFloat(id);
   const [foto, setFoto] = useState("");
   const [tipo1, setTipo1] = useState("" && true);
-  const [sorteio, setSorteio] = useState<number[]>([]);
 
   useEffect(() => {
     // obter Pokemon

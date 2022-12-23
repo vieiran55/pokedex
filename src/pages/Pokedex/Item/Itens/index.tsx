@@ -1,9 +1,7 @@
 import axios from "axios";
-import IData from "interfaces/IData";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import estilos from "./Itens.module.scss";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   name: string;

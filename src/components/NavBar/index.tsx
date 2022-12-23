@@ -1,29 +1,12 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-// import MenuIcon from "@mui/icons-material/MenuIcon";
-// import SearchIcon from "@mui/icons-material/SearchIcon";
-import Input from "@mui/material/Input";
-import FilledInput from "@mui/material/FilledInput";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import { BiSearchAlt } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import estilos from "./NavBar.module.scss";
-import Pokemon from "pages/Pokemon";
-import axios from "axios";
-import IData from "interfaces/IData";
-import Card from "pages/Card";
-import Loading from "pages/Pokedex";
 import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
@@ -85,7 +68,7 @@ export default function NavBar({
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className={estilos.navContainer}>
       <AppBar className={estilos.navbarra} position="static">
         <Toolbar>
           <nav className={estilos.navbarra}>

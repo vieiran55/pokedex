@@ -3,6 +3,19 @@
 @import 'styles/variaveis';
 @import "styles/breakpoints";
 
+.navContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @media (min-width: $desktop_xsm) {
+    width: 90%;
+  }
+  @media (min-width: $desktop_md) {
+    width: 1000px;
+  }
+}
+
 .navbarra{
   margin: 1em 0em;
   display: flex;
@@ -18,7 +31,7 @@
   width: 100%;
   height: 50px;
   text-decoration: none;
-&:hover{
+&:active:after{
   cursor: pointer;
   background-color: #170BE2;
 }

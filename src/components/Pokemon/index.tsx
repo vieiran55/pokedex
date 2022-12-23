@@ -1,5 +1,4 @@
 import axios from "axios";
-import IData from "interfaces/IData";
 import estilos from "./Pokemon.module.scss";
 import * as React from "react";
 import CircularProgress, {
@@ -10,9 +9,7 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { IoScaleOutline } from "react-icons/io5";
 import { GiThermometerScale } from "react-icons/gi";
-import Loading from "pages/Pokedex";
 import { useNavigate } from "react-router-dom";
-import { url } from "inspector";
 
 interface Props {
   inputPokemon: string;
@@ -38,10 +35,6 @@ export default function Pokemon(props: Props) {
 
   const [id, setID] = useState("");
   const pokemonId = parseFloat(id);
-
-  const pokemonIdDivisao = pokemonId / 100;
-
-  // const idSemPonto = id.replace(/,/g, "").replace(/\./g, "");
 
   const [nomeDoPokemon, setNomeDoPokemon] = useState("");
   const nomeDoPokemonReal = nomeDoPokemon.toUpperCase();
@@ -295,13 +288,6 @@ export default function Pokemon(props: Props) {
     );
   }
 
-  // const  = () =>  {
-  //   if (isShown) {
-  //     alert("ele esta ativo");
-  //   } else {
-  //     alert("ele nao esta ativo");
-  //   }
-  // };
 
   return (
     <>

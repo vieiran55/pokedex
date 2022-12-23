@@ -1,14 +1,9 @@
 import axios from "axios";
-import IData from "interfaces/IData";
-import Pokemon from "pages/Pokemon";
+import Pokemon from "components/Pokemon";
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Item from "./Item";
-import Itens from "./Item/Itens";
 import estilos from "./Pokedex.module.scss";
-import {GrNext} from "react-icons/gr";
-import {GrPrevious} from "react-icons/gr";
 
 interface Props {
   url: string;
@@ -52,8 +47,6 @@ export default function Pokedex({
         console.log(erro);
       });
   }, []);
-
-  const navigate = useNavigate();
 
   const proxima = () => {
     setValidaBotao(false);

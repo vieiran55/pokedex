@@ -1,4 +1,4 @@
-import Header from "pages/Header";
+import Header from "components/Header";
 import Home from "pages/Home";
 import Pokedex from "pages/Pokedex";
 import NotFound from "pages/NotFound";

@@ -68,48 +68,48 @@ export default function NavBar({
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1 }} className={estilos.navContainer}>
-      <AppBar className={estilos.navbarra} position="static">
-        <Toolbar>
-          <nav className={estilos.navbarra}>
-            <Link to="/pokedex" className={estilos.navbarra__link}>
-              Pokédex
-            </Link>
-            <a
-              onClick={() => window.open("https://pokemon-app-psi-ten.vercel.app/")}
-              className={estilos.navbarra__link}
-            >
-              Game
-            </a>
-          </nav>
-          <TextField
-            sx={{ fontWeight: "bold" }}
-            error={valida}
-            className={estilos.pesquisa}
-            id="standard-basic"
-            label="Search..."
-            type="text"
-            variant="filled"
-            value={inputPokemon}
-            onKeyDown={handleKeyDown}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment
-                  position="end"
-                  className={estilos.icon__container}
-                >
-                  <BiSearchAlt
-                    type="submit"
-                    className={estilos.icon__container__icon}
-                    onClick={handleClick}
-                  />
-                </InputAdornment>
-              ),
-            }}
-            onChange={(e) => handleChange(e)}
-          />
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <>
+      <div className={estilos.navContainer}>
+        <nav className={estilos.navbarra}>
+          <Link to="/pokedex" className={estilos.navbarra__link}>
+            Pokédex
+          </Link>
+          <a
+            onClick={() =>
+              window.open("https://pokemon-app-psi-ten.vercel.app/")
+            }
+            className={estilos.navbarra__link}
+          >
+            Game
+          </a>
+        </nav>
+        <TextField
+          sx={{ fontWeight: "bold" }}
+          error={valida}
+          className={estilos.pesquisa}
+          id="standard-basic"
+          label="Search..."
+          type="text"
+          variant="filled"
+          value={inputPokemon}
+          onKeyDown={handleKeyDown}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment
+                position="end"
+                className={estilos.icon__container}
+              >
+                <BiSearchAlt
+                  type="submit"
+                  className={estilos.icon__container__icon}
+                  onClick={handleClick}
+                />
+              </InputAdornment>
+            ),
+          }}
+          onChange={(e) => handleChange(e)}
+        />
+      </div>
+    </>
   );
 }

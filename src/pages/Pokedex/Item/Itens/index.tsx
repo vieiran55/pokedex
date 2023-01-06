@@ -49,25 +49,24 @@ export default function Itens(props: Props) {
   const recarrega2 = () => {
     setIsShown(true);
   };
+  const topo = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const handleClick = () => {
-    console.log(inputPokemonReal);
     if (!isShown) {
       setIsShown(true);
       setPokemon(inputPokemonReal);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      setTimeout(topo, 300);
       setTimeout(limpaPokemon, 2000);
     } else if (isShown) {
       setTimeout(recarrega1, 100);
       setTimeout(recarrega2, 150);
       setPokemon(inputPokemonReal);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      setTimeout(topo, 300);
       setTimeout(limpaPokemon, 2000);
     }
   };
@@ -76,16 +75,15 @@ export default function Itens(props: Props) {
     <>
       <div className={estilos[`${tipo1}`]} onClick={handleClick}>
         <div className={estilos[`${tipo1}__card`]}>
-          <div>
-            <div className={estilos.titulo}>
-              <p className={estilos[`${tipo1}__id`]}>#{pokemonId}</p>
-            </div>
-            <img className={estilos[`${tipo1}__imagem`]} src={`${foto}`} />
-            <div className={estilos[`${tipo1}__cabecalho`]}>
-              <h1 className={estilos[`${tipo1}__cabecalho__titulo`]}>
-                {nomePokemonReal}
-              </h1>
-            </div>
+          <div className={estilos.titulo}>
+            <p className={estilos[`${tipo1}__id`]}>#{pokemonId}</p>
+          </div>
+          <img className={estilos[`${tipo1}__imagem`]} src={`${foto}`} />
+ 
+          <div className={estilos[`${tipo1}__cabecalho`]}>
+            <h1 className={estilos[`${tipo1}__cabecalho__titulo`]}>
+              {nomePokemonReal}
+            </h1>
           </div>
         </div>
       </div>

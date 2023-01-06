@@ -42,7 +42,6 @@ export default function Item(props: Props) {
     axios
       .get(url)
       .then((resposta) => {
-        console.log(resposta);
         setRepositorio(resposta.data.results);
         setNext(resposta.data.next);
         setprevious(resposta.data.previous);

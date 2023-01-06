@@ -4,6 +4,9 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import Item from "./Item";
 import estilos from "./Pokedex.module.scss";
+import { BsArrowRightCircleFill } from "react-icons/bs";
+import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { BsArrowUpCircleFill } from "react-icons/bs";
 
 interface Props {
   url: string;
@@ -31,7 +34,9 @@ export default function Pokedex({
   setIsShown,
 }: Props) {
   const [repositorio, setRepositorio] = useState("");
-
+  const [isShownLoading, setisShownLoading] = useState(true);
+  const [validaBotao, setValidaBotao] = useState(true);
+  
   useEffect(() => {
     setIsShown(false);
     setUrl("https://pokeapi.co/api/v2/pokemon?offset=0&limit=10");
@@ -71,20 +76,30 @@ export default function Pokedex({
     setisShownLoading(true);
   };
 
-  const [isShownLoading, setisShownLoading] = useState(true);
-  const [validaBotao, setValidaBotao] = useState(true);
+  const topo = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+
 
   return (
     <>
-      <div className={estilos.botoes}>       
-        <button className={estilos.botoes__tipo} onClick={proxima}>Next Page</button>
+      {/* <span className="animate-waving-hand">👋🏻</span> */}
+      <div className={estilos.botoes}>
+        <button className={estilos.botoes__tipo} onClick={proxima}>
+          <BsArrowRightCircleFill className={estilos.seta} />
+        </button>
         <div className={estilos.botoes__titulo}>
-          <h1 className={estilos.botoes__titulo__texto}>
-          Pokédex
-          </h1>
         </div>
-        <button className={estilos.botoes__tipo} onClick={anterior} disabled={validaBotao}>
-          Previous Page
+        <button
+          className={estilos.botoes__tipo}
+          onClick={anterior}
+          disabled={validaBotao}
+        >
+          <BsArrowLeftCircleFill className={estilos.seta} />
         </button>
       </div>
       <div className={estilos.itens}>
@@ -113,10 +128,19 @@ export default function Pokedex({
           )}
         </>
       </div>
-      <div className={estilos.botoes}>       
-        <button className={estilos.botoes__tipo} onClick={proxima}>Next Page</button>
-        <button className={estilos.botoes__tipo} onClick={anterior} disabled={validaBotao}>
-          Previous Page
+      <div className={estilos.botoes}>
+        <button className={estilos.botoes__tipo} onClick={proxima}>
+          <BsArrowRightCircleFill className={estilos.seta} />
+        </button>
+        <button className={estilos.botoes__tipo__up} onClick={topo}>
+          <BsArrowUpCircleFill className={estilos.seta} />
+        </button>
+        <button
+          className={estilos.botoes__tipo}
+          onClick={anterior}
+          disabled={validaBotao}
+        >
+          <BsArrowLeftCircleFill className={estilos.seta} />
         </button>
       </div>
     </>

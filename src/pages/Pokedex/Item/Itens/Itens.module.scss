@@ -3,966 +3,121 @@
 @import 'styles/variaveis';
 @import "styles/breakpoints";
 
-.teste{
+@mixin TipoPokemon($tipo, $tipoBall){
   display: flex;
-}
+  flex-direction: column;
+  align-items: center;
+  background-color: $tipo;
+  margin: 2em 0.5em;
+  border-radius: 11px;
+  width: 175px;
+  height: 296px;
+  :hover{
+    cursor: pointer;
+  }
+  &__card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white-ice;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-image: $tipoBall;
+    // @apply animate-loop-clock h-6;
+    width: 170px;
+    height: 290px;
+    margin-top: 3px;
+    border-radius: 11px;
+  }
+  &__card__card{
+    background-image: $tipoBall;
+    width: 170px;
+    height: 268px;
+  }
+  &__id{
+    color: $tipo;
+    text-align: end;
+    font-weight: bolder;
+    padding-right: 11px;
+  }
+  &__imagem{
+    width: 176px;
+    height: 200px;
+  }
+  &__imagem:active{
+    @apply animate-spin
+  }    
+  &__cabecalho{
+      background-color: $tipo;
+      border-bottom-left-radius: 11px;
+      border-bottom-right-radius: 11px;
+      margin-top: 39px;
+      width: 100%;
+      &__titulo{
+        font-size: 18px;
+        color: $white-ice;
+        text-align: center;
+      }
+    }
+  }
 
 .normal{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $normal;
-  margin: 2em 0.5em;
-  border-radius: 11px;
-  width: 175px;
-  height: 296px;
-  :hover{
-    cursor: pointer;
-  }
-  &__card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $white-ice;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: url("../../../../imgs/ball/normalBall.svg");
-    width: 170px;
-    height: 268px;
-    margin-top: 3px;
-    border-radius: 11px;
-  }
-  &__id{
-    color: $normal;
-    text-align: end;
-    font-weight: bolder;
-    padding-right: 11px;
-  }
-  &__imagem{
-    width: 178px;
-    height: 195px;
-  }
-  &__cabecalho{
-      background-color: $normal;
-      border-bottom-left-radius: 11px;
-      border-bottom-right-radius: 11px;
-      width: 100%;
-      &__titulo{
-        font-size: 23px;
-        color: $white-ice;
-        text-align: center;
-      }
-    }
-  }
-
-  .fighting{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $fighting;
-    margin: 2em 0.5em;
-    border-radius: 11px;
-    width: 175px;
-    height: 296px;
-    :hover{
-      cursor: pointer;
-    }
-    &__card{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $white-ice;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-image: url("../../../../imgs/ball/fightingBall.svg");
-      width: 170px;
-      height: 268px;
-      margin-top: 3px;
-      border-radius: 11px;
-    }
-    &__id{
-      color: $fighting;
-      text-align: end;
-      font-weight: bolder;
-      padding-right: 11px;
-    }
-    &__imagem{
-      width: 178px;
-      height: 195px;
-    }
-    &__cabecalho{
-        background-color: $fighting;
-        border-bottom-left-radius: 11px;
-        border-bottom-right-radius: 11px;
-        width: 100%;
-        &__titulo{
-          font-size: 23px;
-          color: $white-ice;
-          text-align: center;
-        }
-      }
-    }
-  
+  @include TipoPokemon($normal, $ballNormal);
+}
+.fighting{
+  @include TipoPokemon($fighting, $ballFighting);
+}
 .flying{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $flying;
-  margin: 2em 0.5em;
-  border-radius: 11px;
-  width: 175px;
-  height: 296px;
-  :hover{
-    cursor: pointer;
-  }
-  &__card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $white-ice;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: url("../../../../imgs/ball/flyingBall.svg");
-    width: 170px;
-    height: 268px;
-    margin-top: 3px;
-    border-radius: 11px;
-  }
-  &__id{
-    color: $flying;
-    text-align: end;
-    font-weight: bolder;
-    padding-right: 11px;
-  }
-  &__imagem{
-    width: 178px;
-    height: 195px;
-  }
-  &__cabecalho{
-      background-color: $flying;
-      border-bottom-left-radius: 11px;
-      border-bottom-right-radius: 11px;
-      width: 100%;
-      &__titulo{
-        font-size: 23px;
-        color: $white-ice;
-        text-align: center;
-      }
-    }
-  } 
-
-  .poison{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $poison;
-    margin: 2em 0.5em;
-    border-radius: 11px;
-    width: 175px;
-    height: 296px;
-    :hover{
-      cursor: pointer;
-    }
-    &__card{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $white-ice;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-image: url("../../../../imgs/ball/poisonBall.svg");
-      width: 170px;
-      height: 268px;
-      margin-top: 3px;
-      border-radius: 11px;
-    }
-    &__id{
-      color: $poison;
-      text-align: end;
-      font-weight: bolder;
-      padding-right: 11px;
-    }
-    &__imagem{
-      width: 178px;
-      height: 195px;
-    }
-    &__cabecalho{
-        background-color: $poison;
-        border-bottom-left-radius: 11px;
-        border-bottom-right-radius: 11px;
-        width: 100%;
-        &__titulo{
-          font-size: 23px;
-          color: $white-ice;
-          text-align: center;
-        }
-      }
-    } 
-  
-    .rock{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $rock;
-      margin: 2em 0.5em;
-      border-radius: 11px;
-      width: 175px;
-      height: 296px;
-      :hover{
-        cursor: pointer;
-      }
-      &__card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $white-ice;
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-image: url("../../../../imgs/ball/rockBall.svg");
-        width: 170px;
-        height: 268px;
-        margin-top: 3px;
-        border-radius: 11px;
-      }
-      &__id{
-        color: $rock;
-        text-align: end;
-        font-weight: bolder;
-        padding-right: 11px;
-      }
-      &__imagem{
-        width: 178px;
-        height: 195px;
-      }
-      &__cabecalho{
-          background-color: $rock;
-          border-bottom-left-radius: 11px;
-          border-bottom-right-radius: 11px;
-          width: 100%;
-          &__titulo{
-            font-size: 23px;
-            color: $white-ice;
-            text-align: center;
-          }
-        }
-      }
-
-      .bug{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $bug;
-        margin: 2em 0.5em;
-        border-radius: 11px;
-        width: 175px;
-        height: 296px;
-        :hover{
-          cursor: pointer;
-        }
-        &__card{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          background-color: $white-ice;
-          background-position: top center;
-          background-repeat: no-repeat;
-          background-image: url("../../../../imgs/ball/bugBall.svg");
-          width: 170px;
-          height: 268px;
-          margin-top: 3px;
-          border-radius: 11px;
-        }
-        &__id{
-          color: $bug;
-          text-align: end;
-          font-weight: bolder;
-          padding-right: 11px;
-        }
-        &__imagem{
-          width: 178px;
-          height: 195px;
-        }
-        &__cabecalho{
-            background-color: $bug;
-            border-bottom-left-radius: 11px;
-            border-bottom-right-radius: 11px;
-            width: 100%;
-            &__titulo{
-              font-size: 23px;
-              color: $white-ice;
-              text-align: center;
-            }
-          }
+  @include TipoPokemon($flying, $ballFlying);
 }
-
-.steel{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $steel;
-  margin: 2em 0.5em;
-  border-radius: 11px;
-  width: 175px;
-  height: 296px;
-  :hover{
-    cursor: pointer;
-  }
-  &__card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $white-ice;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: url("../../../../imgs/ball/steelBall.svg");
-    width: 170px;
-    height: 268px;
-    margin-top: 3px;
-    border-radius: 11px;
-  }
-  &__id{
-    color: $steel;
-    text-align: end;
-    font-weight: bolder;
-    padding-right: 11px;
-  }
-  &__imagem{
-    width: 178px;
-    height: 195px;
-  }
-  &__cabecalho{
-      background-color: $steel;
-      border-bottom-left-radius: 11px;
-      border-bottom-right-radius: 11px;
-      width: 100%;
-      &__titulo{
-        font-size: 23px;
-        color: $white-ice;
-        text-align: center;
-      }
-    }
-  }
-
-  .fire{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $fire;
-    margin: 2em 0.5em;
-    border-radius: 11px;
-    width: 175px;
-    height: 296px;
-    :hover{
-      cursor: pointer;
-    }
-    &__card{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $white-ice;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-image: url("../../../../imgs/ball/fireBall.svg");
-      width: 170px;
-      height: 268px;
-      margin-top: 3px;
-      border-radius: 11px;
-    }
-    &__id{
-      color: $fire;
-      text-align: end;
-      font-weight: bolder;
-      padding-right: 11px;
-    }
-    &__imagem{
-      width: 178px;
-      height: 195px;
-    }
-    &__cabecalho{
-        background-color: $fire;
-        border-bottom-left-radius: 11px;
-        border-bottom-right-radius: 11px;
-        width: 100%;
-        &__titulo{
-          font-size: 23px;
-          color: $white-ice;
-          text-align: center;
-        }
-      }
-    }
-
-    .grass{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $grass;
-      margin: 2em 0.5em;
-      border-radius: 11px;
-      width: 175px;
-      height: 296px;
-      :hover{
-        cursor: pointer;
-      }
-      &__card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $white-ice;
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-image: url("../../../../imgs/ball/grassBall.svg");
-        width: 170px;
-        height: 268px;
-        margin-top: 3px;
-        border-radius: 11px;
-      }
-      &__id{
-        color: $grass;
-        text-align: end;
-        font-weight: bolder;
-        padding-right: 11px;
-      }
-      &__imagem{
-        width: 178px;
-        height: 195px;
-      }
-      &__cabecalho{
-          background-color: $grass;
-          border-bottom-left-radius: 11px;
-          border-bottom-right-radius: 11px;
-          width: 100%;
-          &__titulo{
-            font-size: 23px;
-            color: $white-ice;
-            text-align: center;
-          }
-        }
-      }
-
-      .water{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $water;
-        margin: 2em 0.5em;
-        border-radius: 11px;
-        width: 175px;
-        height: 296px;
-        :hover{
-          cursor: pointer;
-        }
-        &__card{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          background-color: $white-ice;
-          background-position: top center;
-          background-repeat: no-repeat;
-          background-image: url("../../../../imgs/ball/waterBall.svg");
-          width: 170px;
-          height: 268px;
-          margin-top: 3px;
-          border-radius: 11px;
-        }
-        &__id{
-          color: $water;
-          text-align: end;
-          font-weight: bolder;
-          padding-right: 11px;
-        }
-        &__imagem{
-          width: 178px;
-          height: 195px;
-        }
-        &__cabecalho{
-            background-color: $water;
-            border-bottom-left-radius: 11px;
-            border-bottom-right-radius: 11px;
-            width: 100%;
-            &__titulo{
-              font-size: 23px;
-              color: $white-ice;
-              text-align: center;
-            }
-          }
+.poison{
+  @include TipoPokemon($poison, $ballPoison);
 }
-
-.electric{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $electric;
-  margin: 2em 0.5em;
-  border-radius: 11px;
-  width: 175px;
-  height: 296px;
-  :hover{
-    cursor: pointer;
-  }
-  &__card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $white-ice;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: url("../../../../imgs/ball/electricBall.svg");
-    width: 170px;
-    height: 268px;
-    margin-top: 3px;
-    border-radius: 11px;
-  }
-  &__id{
-    color: $electric;
-    text-align: end;
-    font-weight: bolder;
-    padding-right: 11px;
-  }
-  &__imagem{
-    width: 178px;
-    height: 195px;
-  }
-  &__cabecalho{
-      background-color: $electric;
-      border-bottom-left-radius: 11px;
-      border-bottom-right-radius: 11px;
-      width: 100%;
-      &__titulo{
-        font-size: 23px;
-        color: $white-ice;
-        text-align: center;
-      }
-    }
-  }
-
-  .psychic{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $psychic;
-    margin: 2em 0.5em;
-    border-radius: 11px;
-    width: 175px;
-    height: 296px;
-    :hover{
-      cursor: pointer;
-    }
-    &__card{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $white-ice;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-image: url("../../../../imgs/ball/psychicBall.svg");
-      width: 170px;
-      height: 268px;
-      margin-top: 3px;
-      border-radius: 11px;
-    }
-    &__id{
-      color: $psychic;
-      text-align: end;
-      font-weight: bolder;
-      padding-right: 11px;
-    }
-    &__imagem{
-      width: 178px;
-      height: 195px;
-    }
-    &__cabecalho{
-        background-color: $psychic;
-        border-bottom-left-radius: 11px;
-        border-bottom-right-radius: 11px;
-        width: 100%;
-        &__titulo{
-          font-size: 23px;
-          color: $white-ice;
-          text-align: center;
-        }
-      }
-    }
-  
-    .ice{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $ice;
-      margin: 2em 0.5em;
-      border-radius: 11px;
-      width: 175px;
-      height: 296px;
-      :hover{
-        cursor: pointer;
-      }
-      &__card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $white-ice;
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-image: url("../../../../imgs/ball/iceBall.svg");
-        width: 170px;
-        height: 268px;
-        margin-top: 3px;
-        border-radius: 11px;
-      }
-      &__id{
-        color: $ice;
-        text-align: end;
-        font-weight: bolder;
-        padding-right: 11px;
-      }
-      &__imagem{
-        width: 178px;
-        height: 195px;
-      }
-      &__cabecalho{
-          background-color: $ice;
-          border-bottom-left-radius: 11px;
-          border-bottom-right-radius: 11px;
-          width: 100%;
-          &__titulo{
-            font-size: 23px;
-            color: $white-ice;
-            text-align: center;
-          }
-        }
-      }
-
-      .dragon{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $dragon;
-        margin: 2em 0.5em;
-        border-radius: 11px;
-        width: 175px;
-        height: 296px;
-        :hover{
-          cursor: pointer;
-        }
-        &__card{
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          background-color: $white-ice;
-          background-position: top center;
-          background-repeat: no-repeat;
-          background-image: url("../../../../imgs/ball/dragonBall.svg");
-          width: 170px;
-          height: 268px;
-          margin-top: 3px;
-          border-radius: 11px;
-        }
-        &__id{
-          color: $dragon;
-          text-align: end;
-          font-weight: bolder;
-          padding-right: 11px;
-        }
-        &__imagem{
-          width: 178px;
-          height: 195px;
-        }
-        &__cabecalho{
-            background-color: $dragon;
-            border-bottom-left-radius: 11px;
-            border-bottom-right-radius: 11px;
-            width: 100%;
-            &__titulo{
-              font-size: 23px;
-              color: $white-ice;
-              text-align: center;
-            }
-          }
-}
-
-.dark{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $dark;
-  margin: 2em 0.5em;
-  border-radius: 11px;
-  width: 175px;
-  height: 296px;
-  :hover{
-    cursor: pointer;
-  }
-  &__card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $white-ice;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: url("../../../../imgs/ball/darkBall.svg");
-    width: 170px;
-    height: 268px;
-    margin-top: 3px;
-    border-radius: 11px;
-  }
-  &__id{
-    color: $dark;
-    text-align: end;
-    font-weight: bolder;
-    padding-right: 11px;
-  }
-  &__imagem{
-    width: 178px;
-    height: 195px;
-  }
-  &__cabecalho{
-      background-color: $dark;
-      border-bottom-left-radius: 11px;
-      border-bottom-right-radius: 11px;
-      width: 100%;
-      &__titulo{
-        font-size: 23px;
-        color: $white-ice;
-        text-align: center;
-      }
-    }
-  }
-
-  .fairy{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $fairy;
-    margin: 2em 0.5em;
-    border-radius: 11px;
-    width: 175px;
-    height: 296px;
-    :hover{
-      cursor: pointer;
-    }
-    &__card{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $white-ice;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-image: url("../../../../imgs/ball/fairyBall.svg");
-      width: 170px;
-      height: 268px;
-      margin-top: 3px;
-      border-radius: 11px;
-    }
-    &__id{
-      color: $fairy;
-      text-align: end;
-      font-weight: bolder;
-      padding-right: 11px;
-    }
-    &__imagem{
-      width: 178px;
-      height: 195px;
-    }
-    &__cabecalho{
-        background-color: $fairy;
-        border-bottom-left-radius: 11px;
-        border-bottom-right-radius: 11px;
-        width: 100%;
-        &__titulo{
-          font-size: 23px;
-          color: $white-ice;
-          text-align: center;
-        }
-      }
-}
-
-.unknown{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $unknown;
-  margin: 2em 0.5em;
-  border-radius: 11px;
-  width: 175px;
-  height: 296px;
-  :hover{
-    cursor: pointer;
-  }
-  &__card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $white-ice;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: url("../../../../imgs/ball/unknownBall.svg");
-    width: 170px;
-    height: 268px;
-    margin-top: 3px;
-    border-radius: 11px;
-  }
-  &__id{
-    color: $unknown;
-    text-align: end;
-    font-weight: bolder;
-    padding-right: 11px;
-  }
-  &__imagem{
-    width: 178px;
-    height: 195px;
-  }
-  &__cabecalho{
-      background-color: $unknown;
-      border-bottom-left-radius: 11px;
-      border-bottom-right-radius: 11px;
-      width: 100%;
-      &__titulo{
-        font-size: 23px;
-        color: $white-ice;
-        text-align: center;
-      }
-    }
-  }
-
-  .shadow{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $shadow;
-    margin: 2em 0.5em;
-    border-radius: 11px;
-    width: 175px;
-    height: 296px;
-    :hover{
-      cursor: pointer;
-    }
-    &__card{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $white-ice;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-image: url("../../../../imgs/ball/shadowBall.svg");
-      width: 170px;
-      height: 268px;
-      margin-top: 3px;
-      border-radius: 11px;
-    }
-    &__id{
-      color: $shadow;
-      text-align: end;
-      font-weight: bolder;
-      padding-right: 11px;
-    }
-    &__imagem{
-      width: 178px;
-      height: 195px;
-    }
-    &__cabecalho{
-        background-color: $shadow;
-        border-bottom-left-radius: 11px;
-        border-bottom-right-radius: 11px;
-        width: 100%;
-        &__titulo{
-          font-size: 23px;
-          color: $white-ice;
-          text-align: center;
-        }
-      }
-    }
-
-  .ghost{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $ghost;
-    margin: 2em 0.5em;
-    border-radius: 11px;
-    width: 175px;
-    height: 296px;
-    :hover{
-      cursor: pointer;
-    }
-    &__card{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: $white-ice;
-      background-position: top center;
-      background-repeat: no-repeat;
-      background-image: url("../../../../imgs/ball/ghostBall.svg");
-      width: 170px;
-      height: 268px;
-      margin-top: 3px;
-      border-radius: 11px;
-    }
-    &__id{
-      color: $ghost;
-      text-align: end;
-      font-weight: bolder;
-      padding-right: 11px;
-    }
-    &__imagem{
-      width: 178px;
-      height: 195px;
-    }
-    &__cabecalho{
-        background-color: $ghost;
-        border-bottom-left-radius: 11px;
-        border-bottom-right-radius: 11px;
-        width: 100%;
-        &__titulo{
-          font-size: 23px;
-          color: $white-ice;
-          text-align: center;
-        }
-      }
-    }  
-
 .ground{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $grass;
-  margin: 2em 0.5em;
-  border-radius: 11px;
-  width: 175px;
-  height: 296px;
-  :hover{
-    cursor: pointer;
-  }
-  &__card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: $white-ice;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-image: url("../../../../imgs/ball/grassBall.svg");
-    width: 170px;
-    height: 268px;
-    margin-top: 3px;
-    border-radius: 11px;
-  }
-  &__id{
-    color: $grass;
-    text-align: end;
-    font-weight: bolder;
-    padding-right: 11px;
-  }
-  &__imagem{
-    width: 178px;
-    height: 195px;
-  }
-  &__cabecalho{
-      background-color: $grass;
-      border-bottom-left-radius: 11px;
-      border-bottom-right-radius: 11px;
-      width: 100%;
-      &__titulo{
-        font-size: 23px;
-        color: $white-ice;
-        text-align: center;
-      }
-    }
-  }
+  @include TipoPokemon($ground, $ballGround);
+}
+.rock{
+  @include TipoPokemon($rock, $ballRock);
+}
+.bug{
+  @include TipoPokemon($bug, $ballBug);
+}
+.ghost{
+  @include TipoPokemon($ghost, $ballGhost);
+}
+.steel{
+  @include TipoPokemon($steel, $ballSteel);
+}
+.fire{
+  @include TipoPokemon($fire, $ballFire);
+}
+.water{
+  @include TipoPokemon($water, $ballWater);
+}
+.grass{
+  @include TipoPokemon($grass, $ballGrass);
+}
+.electric{
+  @include TipoPokemon($electric, $ballElectric);
+}
+.psychic{
+  @include TipoPokemon($psychic, $ballPsychic);
+}
+.ice{
+  @include TipoPokemon($ice, $ballIce);
+}
+.dragon{
+  @include TipoPokemon($dragon, $ballDragon);
+}
+.dark{
+  @include TipoPokemon($dark, $ballDark);
+}
+.fairy{
+  @include TipoPokemon($fairy, $ballFairy);
+}
+.unknown{
+  @include TipoPokemon($unknown, $ballUnknown);
+}
+.shadow{
+  @include TipoPokemon($shadow, $ballShadow);
+}

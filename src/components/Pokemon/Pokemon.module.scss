@@ -1,969 +1,235 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-@import 'styles/variaveis';
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import "styles/variaveis";
 @import "styles/breakpoints";
 
-
-.normal{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $normal;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/normalBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $normal;
-      font-size: 1.3rem;
+@mixin pokemon($tipo, $tipoBall) {
+  @apply flex flex-col items-center bg-top bg-no-repeat w-96 mt-4 rounded-xl drop-shadow-[0_0_37px_rgba(0,0,0,0.65)];
+  background-color: $tipo;
+  background-image: $tipoBall;
+  .titulo {
+    @apply flex justify-between flex-row w-5/6 h-16 mt-4;
+    color: $white;
+  }
+  .imagem {
+    @apply z-50 w-52 h-52;
+  }
+  .container {
+    @apply -mt-8 flex items-center flex-col p-4 w-full;
+    background-color: $white-ice;
+    border: solid;
+  }
+  &__sobre {
+    @apply flex flex-col items-center text-center;
+    &__titulo {
+      color: $tipo;
+      @apply text-xl;
     }
   }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $normal;
-    &__titulo{
-      font-size: 1rem;
+  &__status {
+    @apply flex flex-col items-center w-11/12;
+    color: $tipo;
+    &__titulo {
+      @apply text-xl text-center mt-2 mb-2;
     }
   }
-}
-.tipo__normal{
-  text-align: center;
-  background-color: $normal;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.fighting{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $fighting;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/fightingBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $fighting;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $fighting;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__fighting{
-  text-align: center;
-  background-color: $fighting;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.flying{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $flying;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/flyingBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $flying;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $flying;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__flying{
-  text-align: center;
-  background-color: $flying;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.poison{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $poison;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/poisonBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $poison;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $poison;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__poison{
-  text-align: center;
-  background-color: $poison;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.ground{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $ground;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/groundBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $ground;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $ground;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__ground{
-  text-align: center;
-  background-color: $ground;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.rock{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $rock;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/rockBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $rock;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $rock;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__rock{
-  text-align: center;
-  background-color: $rock;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.bug{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $bug;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/bugBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $bug;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $bug;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__bug{
-  text-align: center;
-  background-color: $bug;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.ghost{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $ghost;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/ghostBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $ghost;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $ghost;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__ghost{
-  text-align: center;
-  background-color: $ghost;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.steel{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $steel;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/steelBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $steel;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $steel;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__steel{
-  text-align: center;
-  background-color: $steel;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.steel{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $steel;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/steelBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-}
-.tipo__steel{
-  text-align: center;
-  background-color: $steel;
-  border-radius: 11px;
-  width: 9em;
 }
 
 
-.fire{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $fire;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/fireBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-      text-align: center;
-      align-items: center;
-      flex-direction: column;
-      display: flex;
-      &__titulo{
-        color: $fire;
-        font-size: 1.3rem;
-      }
-    }
-  &__status{
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      width: 90%;
-      color: $fire;
-      &__titulo{
-        font-size: 1rem;
-      }
-    }
+.normal {
+  @include pokemon($normal, $ballNormal);
+}
+.fighting {
+  @include pokemon($fighting, $ballFighting);
+}
+.flying {
+  @include pokemon($flying, $ballFlying);
+  
+}
+.poison {
+  @include pokemon($poison, $ballPoison);
+  
+}
+.ground {
+  @include pokemon($ground, $ballGround);
+}
+.rock {
+  @include pokemon($rock, $ballRock);
+} 
+.bug {
+  @include pokemon($bug, $ballBug);
+} 
+.ghost {
+  @include pokemon($ghost, $ballGhost);
   }
-
-.tipo__fire{
-  text-align: center;
-  background-color: $fire;
-  border-radius: 11px;
-  width: 9em;
+.steel {
+  @include pokemon($steel, $ballSteel);
+  }
+.fire {
+  @include pokemon($fire, $ballFire);
+} 
+.water {
+  @include pokemon($water, $ballWater);
+  }
+.grass {
+  @include pokemon($grass, $ballGrass);
+  }
+.electric {
+  @include pokemon($electric, $ballElectric);
+  
+}
+.psychic {
+  @include pokemon($psychic, $ballPsychic);
+  
+}
+.ice {
+  @include pokemon($ice, $ballIce);
+}
+.dragon {
+  @include pokemon($dragon, $ballDragon);
+  
+}
+.dark {
+  @include pokemon($dark, $ballDark);
+}
+.fairy {
+  @include pokemon($fairy, $ballFairy);
+  }
+.unknown {
+  @include pokemon($unknown, $ballUnknown);
+  
+}
+.shadow {
+  @include pokemon($shadow, $ballShadow);
+  
 }
 
-.water{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $water;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/waterBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
+@mixin tipoPokemon($tipo1) {
+  @apply text-center text-white rounded-xl w-36;
+  background-color: $tipo1;
+}
+
+.tipo__normal {
+  @include tipoPokemon($normal);
+}
+.tipo__fighting {
+  @include tipoPokemon($fighting);
+}
+.tipo__flying {
+  @include tipoPokemon($flying);
+}
+.tipo__poison {
+  @include tipoPokemon($poison);
+}
+.tipo__ground {
+  @include tipoPokemon($ground);
+}
+.tipo__rock {
+  @include tipoPokemon($rock);
+}
+.tipo__bug {
+  @include tipoPokemon($bug);
+}
+.tipo__ghost {
+  @include tipoPokemon($ghost);
+}
+.tipo__steel {
+  @include tipoPokemon($steel);
+}
+.tipo__fire {
+  @include tipoPokemon($fire);
+}
+.tipo__water {
+  @include tipoPokemon($water);
+}
+.tipo__grass {
+  @include tipoPokemon($grass);
+}
+.tipo__electric {
+  @include tipoPokemon($electric);
+}
+.tipo__psychic {
+  @include tipoPokemon($psychic);
+}
+.tipo__ice {
+  @include tipoPokemon($ice);
+}
+.tipo__dragon {
+  @include tipoPokemon($dragon);
+}
+.tipo__dark {
+  @include tipoPokemon($dark);
+}
+.tipo__fairy {
+  @include tipoPokemon($fairy);
+}
+
+.tipo__unknown {
+  @include tipoPokemon($unknown);
+}
+.tipo__shadow {
+  @include tipoPokemon($shadow);
+}
+
+.pokebola {
+  @apply w-56 h-56;
+}
+
+.sobre {
+  @apply flex flex-col items-center text-center;
+  &__titulo {
+    @apply text-xl;
+  }
+}
+
+.pesoAltura__container {
+  @apply flex flex-row items-center justify-between w-24 h-9;
+  &__icon {
+    @apply w-14 h-7;
+  }
+}
+
+.peso_altura {
+  @apply flex justify-between items-center w-80;
+  &__titulo {
+    @apply text-xs m-2;
+  }
+}
+
+.peso {
+  @apply flex flex-col items-center;
+}
+
+.altura {
+  @apply flex flex-col items-center;
+}
+
+.habilidades {
+  @apply flex flex-col items-center justify-between h-16;
+}
+
+.status {
+  @apply flex flex-col items-center w-11/12;
+  &__titulo {
+    @apply text-xs;
+  }
+}
+.graficos {
+  @apply flex flex-col items-center w-8;
+}
+
+.status__dados {
+  @apply w-full flex justify-around;
+}
+
+.id {
+  @apply w-1/12;
+}
+
+.tipos {
+  @apply flex items-center justify-evenly w-9/12;
+  &__column {
     display: flex;
-    &__titulo{
-      color: $water;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $water;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__water{
-  text-align: center;
-  background-color: $water;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.grass{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $grass;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/grassBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $grass;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $grass;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__grass{
-  text-align: center;
-  background-color: $grass;
-  border-radius: 11px;
-  width: 9em;
-}
-
-.electric__status{
-  color: $electric;
-}
-.electric{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $electric;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/electricBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $electric;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $electric;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__electric{
-  text-align: center;
-  background-color: $electric;
-  border-radius: 11px;
-  width: 9em;
-}
-
-
-.psychic{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $psychic;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/psychicBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $psychic;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $psychic;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__psychic{
-  color: $white;
-  text-align: center;
-  background-color: $psychic;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.psychic{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $psychic;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/psychicBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-}
-.tipo__psychic{
-  color: $white;
-  text-align: center;
-  background-color: $psychic;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.ice{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $ice;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/iceBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $ice;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $ice;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__ice{
-  color: $white;
-  text-align: center;
-  background-color: $ice;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.dragon{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $dragon;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/dragonBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $dragon;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $dragon;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__dragon{
-  color: $white;
-  text-align: center;
-  background-color: $dragon;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.dark{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $dark;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/darkBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $dark;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $dark;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__dark{
-  color: $white;
-  text-align: center;
-  background-color: $dark;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.fairy{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $fairy;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/fairyBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $fairy;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $fairy;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__fairy{
-  color: $white;
-  text-align: center;
-  background-color: $fairy;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.unknown{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $unknown;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/unknownBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  img{
-    background-image: url("../../imgs/unknown.svg");
-  }
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $unknown;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $unknown;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__unknown{
-  color: $white;
-  text-align: center;
-  background-color: $unknown;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.shadow{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $shadow;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-image: url("../../imgs/ball/shadowBall.svg");
-  width: 380px;
-  margin-top: 1em;
-  border-radius: 11px;
-  &__sobre{
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    &__titulo{
-      color: $shadow;
-      font-size: 1.3rem;
-    }
-  }
-&__status{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    color: $shadow;
-    &__titulo{
-      font-size: 1rem;
-    }
-  }
-}
-.tipo__shadow{
-  color: $white;
-  text-align: center;
-  background-color: $shadow;
-  border-radius: 11px;
-  width: 9em;
-  height: 1.3em;
-}
-
-.pokebola{
-  width: 208px;
-  height: 208px;
-}
-
-.imagem{
-  z-index: 1000;
-  width: 200px;
-  height: 200px;
-}
-
-.titulo{
-  color: $white;
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  width: 85%;
-}
-
-.container{
-  background-color: $white-ice;
-  border: solid;
-  margin-top: -2em;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 3em;
-  width: 100%;
-}
-
-.sobre{
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  display: flex;
-  &__titulo{
-    font-size: 1.3rem;
-  }
-}
-
-.pesoAltura__container{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  width: 93px;
-  height: 35px;
-  &__icon{
-    width: 59px;
-    height: 28px;
-  }
-}
-
-.peso_altura{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 20em;
-  &__titulo{
-    font-size: 12px;
-    margin: 0.5em;
-  }
-}
-
-.peso{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.altura{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.habilidades{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 61px;
-}
-
-.status{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  &__titulo{
-    font-size: 1.3rem;
-  }
-}
-.graficos{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 10%;
-}
-
-.status__dados{
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.id{
-  width: 7%;
-}
-
-.tipos{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 0em 7em;
-  &__column{
-    display: flex;
-    align-items: center;
+    @apply flex items-center;
   }
 }
